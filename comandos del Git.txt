@@ -1,0 +1,264 @@
+git config --global user.name "Rivero"
+git config --global user.email "lareddejack@hotmail.com"
+git config --global -e
+git init // crear el repositorio local
+git status // que es lo que smodifico y que esta en stage
+git add .  // comando para mandarlo al escenario o stage
+git commit -m "Primer Commit"  // para tomar el snapshot 
+git checkout -- . recuperar cambios
+creamos un archivo README.md dentro del proyecto
+git log // nos muestra todo los commit del proyecto
+git add -A // agraga todo los arhivos que han sido modificados
+git reset *.xml //para exluir algun archivo en este caso con extension XML
+
+
+
+git add "*.txt" agrega todo los txt del TODO el proyecto
+git add *.txt Agrega todo los txt en el directorio actual
+git add --all agrega todos los archivos
+git add <lista de archivos> agrega los archivos que listamos
+git add pdfs/*.pdf agraga todos los PDFs dentro de la carpeta PDFs
+git add pdfs/ agrega todos los archivos dentro de la carpeta PDFs
+
+creando alias en GIT
+git config --global alias.lg "log --oneline --decorate --all --graph"
+git config --global alias.s "status -s -b"
+git config --global -e // muestra todas las configuraciones
+git config --global -l // muestra igual las configuraciones guardadas pero en consla
+git diff // cambios que hubo en archivo
+git diff --staged// cambios que hubo en archivo del staged
+git reset HEAD README.md // para sacar un archivo del staged
+git checkout -- README.md // para regresar los cambios al archivo en forma orginal
+git commit -am "Readme Actualizados" // para agregar todos los arhcivos al staged y el commit al mismo tiempo
+git commit --amend -m "Actualizando el readme" // para modificar un commit mal escrito
+git reset --soft HEAD^ // para agregar un comentario en el archivo que se me olvido
+git add -- .
+ git reset --mixed 629cecd  // regresamos a un punto de la hitora
+git reset --hard 629cecd // destruimos todo despues de este commit
+git mv destruir-mundo.txt salvar-mundo.txt // cambia el nombre de un archivo..
+git rm salvar-mundo.txt // eleminar archivo 
+
+despues de modificar o eliminar un archivo desde el visual studio ACTUALIZAMOS de la sig. manera
+git add -u // actualiza los archivos
+git add -A // para agregar el archivo modificado
+//para ignorar archivos o carpetas hacemos lo siguiente
+creamos un archivo que se llame .gitignore
+aqui metemos los arhchivos o carpetas que deseamos ignorar
+*.log // aqui todos los archivos que tengas la extension log
+node_modules/ //todo lo que este dentro de esta carpeta
+
+****** CREANDO NUEVAS RAMAS *********  Merge Fast-Forward
+
+git branch nombre de la rama // crea una rama
+git branch // muestra ramas
+git checkout nombre de la rama // para moverte de una rama a otra
+git diff rama-villanos master // para ver la diferencia entre una rama y otra 
+git merge rama-villanos // para unir la rama-villanos a la master para esto debemos estar en la MASTER
+git branch -d rama-villanos // borrando la rama-villanos
+
+**** creando rama **** 4. Merge Union automa´tica
+git checkout -b rama-villanos // creamos rama y nos movemos hacia ella automaticamente
+
+**** cuando tenemos conflictos solamente editamos el archivo que esta en este punto y salvamos y con 
+estos lo estamos resolviendo ***
+
+### Creando etiquetas ####### TAGS
+
+git tag superRelease // Creando un tag
+git tag // ver todo los tag
+git tag -d superRelease // Borrando tag
+
+
+//// Creando Tag mas explicitos //////
+git tag -a v1.0.0 -m "Versión 1.0.0" // creamos una etiqueta con el nombre de la version
+git tag -a v0.1.0 345d7de -m "Versión alfa" // aqui metemos una etiqueta en el hash 345d7de del commit
+git show v1.0.0 // muestra informacion completa del tag
+
+
+########### stash ############
+
+git stash // guardar y restaura un trabajo en el stash 
+git stash list // muestra todo los trabajos de stash
+git stash pop // recupera y elimina el stash
+git stash drop // borra el ultimo stash
+git stash save // el ultimo commit
+git stash apply // Restaura el ultimo registro en el stash
+  ejemplo:
+   stash@{0}
+   stash@{1}
+   stash@{2}
+git stash apply stash@{0} // recupera este stash 
+git stash save --keep-index //Guarda todos menos los archivos en el stage o en el escenario
+git stash save --include-untracked // Incluye todos los archivos, junto a los que git no le da seguimiento
+git stash list --stat // Aparece mas detallados los stash
+git show stash // muestra todo los cambios en la linea 
+
+*** Agregar Mensaje en los stash ******
+git stash save "Agragamos a loki en los villanos" // agrega mensaje en los stash 
+git stash clear // Borra todas las entradas en el stash
+
+
+***** rebase *********** une dos ramas mueve los commits de rama lateral a la rama master y las pone en una sola linea del tiempo 
+
+git branch // que nos muestre el nombre de las ramas
+git checkout rama-misiones-completados // nos pasamos a la rama adicional
+git rebase master  // con esto movemos los dos commit o los que halla a un area temporal y despues mueve el puntero de la 
+rama-misiones al ultimo commit de la rama master y regresa los commits a la rama-misiones 
+
+despues **** unimos ramas
+git checkout master // nos pasamos a rama master
+git merge rama-misiones-completadas // aqui unimos las ramas
+git branch -d rama-misiones-completadas
+
+****** Squash ********* unir dos cosas
+
+**** rebase interactivo ***** 
+git rebase -i HEAD~3 ~(virgulilla) // aqui mueve los ultimos 3 commits a un area temporal y los vuelve a regresar como fueron ingresados
+   *** para que nos serviria eso?? rebase interactivo
+
+		* ordenar commits
+		* corregir mensajes de los commits
+		* unir commits
+		* separar commits
+
+
+git rebase -i HEAD~4 // aqui seleccionamos los ultimos 4 commits y nos abre el siguiente archivo NOTA: esto es para unir dos commits
+
+
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 04ed062 Agregamos el archivo de las misiones completadas
+pick 04ed062 Actualizamos dos misiones completadas al momento
+pick 66eafc6 Actualizamos las misiones completadas
+
+
+// aqui cambiamos la palabra pick por squash y queda como sigue
+
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 04ed062 Agregamos el archivo de las misiones completadas
+pick 04ed062 Actualizamos dos misiones completadas al momento
+squash 66eafc6 Actualizamos las misiones completadas
+
+// depues guardamos y nos sale otro archivo del cual ingresamos la leyenda del commit de como va a quedar: 
+
+      Actualizamos la informacion de las misiones completadas // y borramos todo lo demas que no sirva...
+
+
+# Rebase acea380..66eafc6 onto acea380 (4 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+
+/// nos quedarias asi ......
+
+* 66eafc6 (HEAD -> master) Actualizamos la informacion de las misiones completadas
+* 04ed062 Agregamos el archivo de las misiones completadas
+* 158ba9e Se agrego a la liga: Volcán Negro
+* 300c014 Misiones nuevas agregadas
+
+
+
+###### Rebase - Reword ######### // sirve para acortar nombre del commit
+
+git rebase -i HEAD~1
+**** nos abre un archivo ....
+pick 66eafc6 Actualizamos la informacion de las misiones completadas
+editamos la palabra pick por reword y nos queda asi
+reword 66eafc6 Actualizamos la informacion de las misiones completadas
+guardamos y salimos del archivo y nos abre otro archivo y ahora si podemos editar el texto
+Actualizamos la informacion de las misiones completadas // aqui editamos y queda como sigue:
+Update: Misiones completadas
+y guardamos y salimos y nos aparece lo que sigue:
+
+[detached HEAD 6a86722] Update: Misiones completadas
+ Author: Strider <fernando.herrera85@gmail.com>
+ Date: Fri Jun 23 15:44:41 2017 -0600
+ 1 file changed, 4 insertions(+)
+Successfully rebased and updated refs/heads/master.
+
+
+###### Rebase - Edit ######### // 
+revertimos un archivo a su estado anterior
+git checkout -- nombre del archivo
+
+cuando modificamos dos archivos tenemos:
+$ git s
+## master
+ M README.md
+ M villanos.md
+despues los agragamos y damos un commita ambos archivos
+Rivero@DESKTOP-FDE63RU MINGW64 ~/Desktop/curso/demo-08 (master)
+$  git commit -am "comits"
+warning: LF will be replaced by CRLF in README.md.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in villanos.md.
+The file will have its original line endings in your working directory
+[master 9652377] comits
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+ rewrite README.md (80%)
+
+#########
+damos un git lg
+Rivero@DESKTOP-FDE63RU MINGW64 ~/Desktop/curso/demo-08 (master)
+$ git lg
+* 9652377 (HEAD -> master) comits // aqui tenemos un solo commit por los dos archivos
+%%&&####### como podemos hacerle para separarlos???? 
+git rebase -i HEAD~2 // nos abre un archivo
+
+pick 6a86722 Update: Misiones completadas
+pick 9652377 comits
+
+y hacemos la edicion como sigue:
+
+pick 6a86722 Update: Misiones completadas
+edit 9652377 comits
+
+guardamos y salimos 
+
+le damos el siguiente commando para separa los cambios del commit y asi separarlos
+git reset HEAD^ // aqui nos separa
+git add README.md // aqui agregamos el archivo README.md
+git commit -m "Actualizaciones al readme" // agregamos el commit
+// como es un unico archivo le damos el siguiente comando para agregar y comentar
+git commit -am "Agregamos a DeadShot"
+de ahi le damos el siguiente comando para que ya no nos aparezca:
+Rivero@DESKTOP-FDE63RU MINGW64 ~/Desktop/curso/demo-08 (master|REBASE 2/2)
+$ ## HEAD (no branch)
+git rebase --continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

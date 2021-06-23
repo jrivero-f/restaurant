@@ -10,9 +10,9 @@ export default function RestaurantsStack(){
     return (
         <Stack.Navigator>
             <Stack.Screen 
-            name = "restaurant"
+            name = "restaurants"
             component = {Restaurants}
-            options = {{ title: "Restaurantess" }}
+            options = {{ title: "Restaurantes" }}
             />
          <Stack.Screen
          name="add-restaurant"

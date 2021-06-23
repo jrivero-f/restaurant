@@ -120,3 +120,37 @@ LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
 !!!!Instalacion de packages para poder acceder a la galeria del telefono!!!!!
 yarn add expo-permissions@~8.1.0
 yarn add expo-image-picker@~8.1.0
+
+\***\* instalando el componente MapView y Location ****\*\*\*\*******
+
+https://classic.yarnpkg.com/en/package/react-native-maps
+
+yarn add react-native-maps@~0.27.1
+
+https://classic.yarnpkg.com/en/package/expo-location
+
+yarn add expo-location@~8.1.0
+
+damos permiso en app.json
+"android": {
+"permissions": [
+"CAMERA",
+"READ_EXTERNAL_STORAGE",
+"WRITE_EXTERNAL_STORAGE",
+"LOCATION",
+"ACCESS_COARSE_LOCATION",
+"ACCESS_FINE_LOCATION"
+],
+
+yarn add react-native-maps@~0.26.1
+
+creamos en firabase la carptea ed restaurant
+y de ahi instalamos random-uuid-v4 espara generar ID unicos para las imaganes
+
+se instala el siguiente componente
+yarn add base-64@~0.1.0
+
+para generar el APK
+expo build:android
+
+sweech aplicacion para pasar archivos de pc a celular

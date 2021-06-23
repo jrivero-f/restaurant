@@ -1,0 +1,21 @@
+API KEY
+
+AIzaSyCTX1rAeuR8GaGypsDM88-7lU7CB8jdUo0
+
+*******************
+
+Accessing credentials for jrivero2020 in project 5-tenedores
+Google Certificate Fingerprint:     CB:16:6B:23:24:C5:1B:1E:99:8B:A1:2C:5A:35:85:CD:86:86:60:A1
+Google Certificate Hash (SHA-1):    CB166B2324C51B1E998BA12C5A3585CD868660A1
+Google Certificate Hash (SHA-256):  B51C14C9DFA443CEA96B388A8824AED203C97FCBA38C04E002309A277209FD71
+Facebook Key Hash:                  yxZrIyTFGx6Zi6EsWjWFzYaGYKE=
+
+############################
+
+AIzaSyCxKi1xLbzDu1CZDgEuz7qPJX3swVZf9OM
+
+Accessing credentials for jrivero2020 in project 5-tenedores
+Google Certificate Fingerprint:     CB:16:6B:23:24:C5:1B:1E:99:8B:A1:2C:5A:35:85:CD:86:86:60:A1
+Google Certificate Hash (SHA-1):    CB166B2324C51B1E998BA12C5A3585CD868660A1
+Google Certificate Hash (SHA-256):  B51C14C9DFA443CEA96B388A8824AED203C97FCBA38C04E002309A277209FD71
+Facebook Key Hash:                  yxZrIyTFGx6Zi6EsWjWFzYaGYKE=
